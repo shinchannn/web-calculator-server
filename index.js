@@ -26,9 +26,12 @@ io.on("connection", (socket) => {
     callback();
   });
 
-  socket.on("sendRecord", ({ r, username }, callback) => {
-    io.to(ROOM).emit("record", { text: r, username: username });
-    console.log(username);
+  socket.on("sendRecord", ({ r, username, createdTime }, callback) => {
+    io.to(ROOM).emit("record", {
+      text: r,
+      username: username,
+      createdTime: createdTime,
+    });
     callback();
   });
 
